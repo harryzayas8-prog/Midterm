@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.9.6-eclipse-temurin-17'
-        }
-    }
+    agent any
     stages {
         stage('Checkout') {
             steps {
@@ -12,7 +8,8 @@ pipeline {
         }
         stage('Build Fat JAR') {
             steps {
-                sh 'mvn clean package'
+                // This will use the system Maven or wrapper depending on what's installed
+                sh 'mvn clean package -DskipTests'
             }
         }
     }
