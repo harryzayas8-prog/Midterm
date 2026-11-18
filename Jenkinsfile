@@ -8,8 +8,9 @@ pipeline {
         }
         stage('Build Fat JAR') {
             steps {
-                // This will use the system Maven or wrapper depending on what's installed
-                sh 'mvn clean package -DskipTests'
+                dir('complete') {
+                    sh 'mvn clean package -DskipTests'
+                }
             }
         }
     }
