@@ -8,7 +8,8 @@ pipeline {
         }
         stage('Build Fat JAR') {
             steps {
-                sh './mvnw clean package'
+                // Use system maven instead of maven wrapper
+                sh 'mvn clean package'
             }
         }
     }
@@ -18,4 +19,3 @@ pipeline {
         }
     }
 }
-EOF
